@@ -1,0 +1,54 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="display-4 text-center text-primary mb-4">Добро пожаловать на сайт по кибербезопасности!</h1>
+        <p class="lead text-center mb-5">Этот сайт создан для того, чтобы помочь вам защититься от онлайн-угроз, избежать мошенничества и безопасно использовать интернет. Наши курсы помогут вам освоить основы кибербезопасности, даже если у вас нет технических знаний.</p>
+
+        <h2 class="text-center mb-4">Популярные курсы</h2>
+        <div class="row">
+            {% for course in courses %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ course.title }}</h5>
+                            <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+                            <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'index' %}" class="btn btn-success btn-lg">Все курсы</a>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Почему важна кибербезопасность?</h2>
+        <div class="info-card p-4 rounded shadow-sm bg-light">
+        <p class="text-dark">
+            Киберугрозы могут исходить из различных источников. Защита вашей личной информации и безопасности в сети важна, особенно в мире, где все больше повседневных задач решаются через интернет.
+        </p>
+
+        <h5 class="text-secondary font-weight-bold">Наши курсы помогут вам:</h5>
+        <ul class="list-unstyled">
+            <li class="mb-2">
+                <i class="fas fa-check-circle text-success"></i> Понять, как защититься от фишинга и мошенничества.
+            </li>
+            <li class="mb-2">
+                <i class="fas fa-check-circle text-success"></i> Научиться безопасно использовать пароли и аутентификацию.
+            </li>
+            <li class="mb-2">
+                <i class="fas fa-check-circle text-success"></i> Защитить свои устройства от вирусов и шпионского ПО.
+            </li>
+            <li class="mb-2">
+                <i class="fas fa-check-circle text-success"></i> Соблюдать лучшие практики безопасного использования социальных сетей и онлайн-банкинга.
+            </li>
+        </ul>
+    </div>
+    </div>
+
+{% endblock %}
